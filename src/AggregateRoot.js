@@ -1,12 +1,12 @@
-import { each } from 'lodash';
+const { each } = require('lodash');
 
 class AggregateRoot {
-  apply = function (events) {
+  apply(events) {
     each(events, event => {
       if (this[event.eventType]) {
         this[event.eventType](event);
       }
     });
-  };
+  }
 }
-export default AggregateRoot;
+module.exports = AggregateRoot;
