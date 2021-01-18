@@ -1,10 +1,10 @@
 const { flatten } = require('lodash');
 module.exports = function () {
   return function (context) {
-    const events = [];
+    let events = [];
     async function callAction(agg, action, args) {
       const _events = await agg[action](context, args);
-      events.push(flatten([_events]));
+      events = flatten([events, _events]);
     }
     return { callAction, getEvents: () => events };
   };
