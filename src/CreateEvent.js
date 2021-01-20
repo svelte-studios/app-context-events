@@ -1,4 +1,4 @@
-export default user => {
+module.exports = user => {
   return (type, data) => {
     return {
       eventType: type,
