@@ -1,4 +1,4 @@
-const { flatten } = require('lodash');
+const { flatten, compact } = require('lodash');
 module.exports = function () {
   return function (context) {
     let events = [];
@@ -6,6 +6,6 @@ module.exports = function () {
       const _events = await agg[action](context, args);
       events = flatten([events, _events]);
     }
-    return { callAction, getEvents: () => events };
+    return { callAction, getEvents: () => compact(events) };
   };
 };
